@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <MenuIcon />
+        <MenuIcon fontSize="large" />
         <p style={{ padding: "0em 0.5em" }}>Design Board</p>
       </header>
       <div className="editor">

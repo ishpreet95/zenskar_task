@@ -1,7 +1,7 @@
 import React from "react";
-
-const Input = () => {
-  return <div>Input</div>;
+import { Input } from "@mui/joy";
+const InputComponent = () => {
+  return <Input placeholder="type here..." />;
 };
 
-export default Input;
+export default InputComponent;

@@ -33,8 +33,15 @@ const ComponentSlice = createSlice({
         y,
       });
     },
+    moveComponent: (state, action) => {
+      // console.log(action.payload);
+      const { id, x, y } = action.payload;
+      const index = state.grid.findIndex((item) => item.id === id);
+      state.grid[index].x = Math.ceil(x / 25) * 25;
+      state.grid[index].y = Math.ceil(y / 25) * 25;
+    },
   },
 });
 
-export const { addComponent } = ComponentSlice.actions;
+export const { addComponent, moveComponent } = ComponentSlice.actions;
 export default ComponentSlice.reducer;
