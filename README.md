@@ -1,1 +1,0 @@
-# zenskar_task

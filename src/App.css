@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&family=Rubik:wght@300;400;500;600&display=swap");
+#root,
+body,
+html {
+  height: 100%;
+  width: 100%;
+  font-family: rubik;
+  margin: 0px;
+}
+.App {
+  text-align: center;
+  height: 100%;
+}
+
+.App-header {
+  height: 70px;
+  border-bottom: 2px solid rgb(226, 226, 226);
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: flex-start;
+  font-size: calc(8px + 2vmin);
+  font-weight: 500;
+  padding: 0em 0.5em;
+}
