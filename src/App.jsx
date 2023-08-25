@@ -3,7 +3,8 @@ import "./App.css";
 import MenuIcon from "@mui/icons-material/Menu";
 
 // You can split your components
-import Editor from "./Editor";
+import EditorCanvas from "./EditorCanvas";
+import EditorPicker from "./EditorPicker";
 
 const App = () => {
   return (
@@ -12,7 +13,10 @@ const App = () => {
         <MenuIcon />
         <p style={{ padding: "0em 0.5em" }}>Design Board</p>
       </header>
-      <Editor />
+      <div className="editor">
+        <EditorCanvas />
+        <EditorPicker />
+      </div>
     </div>
   );
 };

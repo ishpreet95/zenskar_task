@@ -23,3 +23,32 @@ html {
   font-weight: 500;
   padding: 0em 0.5em;
 }
+.editor {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.editor .editor-canvas {
+  width: calc(100% - 250px);
+  font-weight: 700;
+  font-size: 2em;
+  color: rgb(192, 192, 192);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(228, 228, 228);
+}
+
+.editor .editor-picker {
+  padding: 25px;
+  width: 250px;
+  border-left: 2px solid rgb(226, 226, 226);
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.8em;
+}
