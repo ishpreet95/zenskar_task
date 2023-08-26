@@ -1,54 +1,49 @@
 import React from "react";
 import { Table } from "@mui/joy";
+function createData(name, calories, carbs, protein) {
+  return { name, calories, carbs, protein };
+}
+
+const rows = [
+  createData("Frozen yoghurt", 159, 24, 4.0),
+  createData("Ice cream sandwich", 237, 37, 4.3),
+  createData("Cupcake", 305, 67, 4.3),
+];
 const TableComponent = () => {
   return (
-    <Table aria-label="basic table">
+    <Table
+      borderAxis="both"
+      size="md"
+      color="neutral"
+      variant="soft"
+      sx={{ width: "400px", height: "225px" }}
+    >
       <thead>
         <tr>
-          <th style={{ width: "40%" }}>Dessert (100g serving)</th>
+          <th>Menu</th>
           <th>Calories</th>
-          <th>Fat&nbsp;(g)</th>
           <th>Carbs&nbsp;(g)</th>
           <th>Protein&nbsp;(g)</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Frozen yoghurt</td>
-          <td>159</td>
-          <td>6</td>
-          <td>24</td>
-          <td>4</td>
-        </tr>
-        <tr>
-          <td>Ice cream sandwich</td>
-          <td>237</td>
-          <td>9</td>
-          <td>37</td>
-          <td>4.3</td>
-        </tr>
-        <tr>
-          <td>Eclair</td>
-          <td>262</td>
-          <td>16</td>
-          <td>24</td>
-          <td>6</td>
-        </tr>
-        <tr>
-          <td>Cupcake</td>
-          <td>305</td>
-          <td>3.7</td>
-          <td>67</td>
-          <td>4.3</td>
-        </tr>
-        <tr>
-          <td>Gingerbread</td>
-          <td>356</td>
-          <td>16</td>
-          <td>49</td>
-          <td>3.9</td>
-        </tr>
+        {rows.map((row) => (
+          <tr key={row.name}>
+            <td>{row.name}</td>
+            <td>{row.calories}</td>
+            <td>{row.carbs}</td>
+            <td>{row.protein}</td>
+          </tr>
+        ))}
       </tbody>
+      <tfoot>
+        <tr>
+          <th scope="row">Totals</th>
+          <td>1,319</td>
+          <td>201</td>
+          <td>22.5</td>
+        </tr>
+      </tfoot>
     </Table>
   );
 };

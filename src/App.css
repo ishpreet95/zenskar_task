@@ -16,7 +16,8 @@ html {
 
 .App-header {
   height: 70px;
-  border-bottom: 2px solid rgb(226, 226, 226);
+  border-bottom: 2px solid rgb(237, 237, 237);
+  background-color: rgb(251, 253, 255);
   display: flex;
   /* flex-direction: column; */
   align-items: center;
@@ -35,38 +36,55 @@ html {
   width: calc(100% - 250px);
   font-weight: 700;
   font-size: 2em;
-  color: rgb(192, 192, 192);
+  color: rgb(159, 165, 170);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(228, 228, 228);
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+.editor .editor-canvas .island {
+  display: flex;
+  background-color: white;
+  font-size: 14px;
+  padding: 10px;
+  gap: 20px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 10px;
+  border-radius: 10px;
+  z-index: 1000;
+  align-items: center;
 }
 
 .editor .editor-picker {
   padding: 25px;
   width: 250px;
-  border-left: 2px solid rgb(226, 226, 226);
+  border-left: 2px solid rgb(237, 237, 237);
   font-weight: 400;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   gap: 0.8em;
+  background-color: rgb(251, 253, 255);
 }
 
 body.dragging .editor-canvas {
-  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(-90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+  background: linear-gradient(-90deg, #0066ff2e 1px, transparent 1px),
+    linear-gradient(#0066ff2e 1px, transparent 1px),
+    linear-gradient(-90deg, #0066ff2e 1px, transparent 1px),
+    linear-gradient(#0066ff2e 1px, transparent 1px),
     linear-gradient(
       transparent 25px,
       #f2f2f2 24px,
       #f2f2f2 76px,
       transparent 75px
     ),
-    linear-gradient(-90deg, #aaa 1px, transparent 1px),
+    linear-gradient(-90deg, #0066ff 1px, transparent 1px),
     linear-gradient(
       -90deg,
       transparent 25px,
@@ -74,7 +92,13 @@ body.dragging .editor-canvas {
       #f2f2f2 76px,
       transparent 75px
     ),
-    linear-gradient(#aaa 1px, transparent 1px), #f2f2f2;
+    linear-gradient(#0066ff 1px, transparent 1px), #f2f2f2;
   background-size: 25px 25px, 25px 25px, 100px 100px, 100px 100px, 100px 100px,
     100px 100px, 100px 100px, 100px 100px;
+}
+
+.drag-target {
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }

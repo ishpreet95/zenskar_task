@@ -8,6 +8,8 @@ export const ComponentCard = ({ type, icon, title, description }) => {
   const dispatch = useDispatch();
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const componentRef = useRef(null);
+  const [dragging, setDragging] = useState(false);
+
   return (
     <Draggable
       onDrag={(e, data) => {
@@ -26,9 +28,17 @@ export const ComponentCard = ({ type, icon, title, description }) => {
 
         setPosition({ x: 0, y: 0 });
 
+        setDragging(true);
+
+        setTimeout(() => {
+          setDragging(false);
+        }, 500);
+
         if (x < 0 || y < 0 || x > canvasRect.width || y > canvasRect.height)
           return;
+
         const id = Date.now();
+        console.log({ canvasX, canvasY, pageX, pageY, x, y });
         dispatch(addComponent({ id, type, x, y }));
       }}
       position={position}

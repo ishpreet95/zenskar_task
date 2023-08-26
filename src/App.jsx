@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import MenuIcon from "@mui/icons-material/Menu";
-
-// You can split your components
 import EditorCanvas from "./EditorCanvas";
 import EditorPicker from "./EditorPicker";
+import { useDispatch } from "react-redux";
+import { resize, clear, clone } from "./slices/componentSlice";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const grid = JSON.parse(localStorage.getItem("grid"));
+    const resizeObserver = new ResizeObserver((entries) => {
+      const width = entries[0].borderBoxSize[0].inlineSize;
+      dispatch(resize({ width }));
+    });
+    const editorCanvas = document.querySelector(".editor-canvas");
+    resizeObserver.observe(editorCanvas);
+
+    if (grid) {
+      dispatch(clone({ grid }));
+    }
+    return () => {
+      resizeObserver.unobserve(editorCanvas);
+    };
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
