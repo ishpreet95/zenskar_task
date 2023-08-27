@@ -20,10 +20,12 @@ const ComponentSlice = createSlice({
     },
     moveComponent: (state, action) => {
       // console.log(action.payload);
-      const { id, x, y } = action.payload;
+      const { id, x, y, zoomlvl } = action.payload;
+      console.log(x, y);
+      const multiplier = 25 * zoomlvl;
       const index = state.grid.findIndex((item) => item.id === id);
-      state.grid[index].x = Math.ceil(x / 25) * 25;
-      state.grid[index].y = Math.ceil(y / 25) * 25;
+      state.grid[index].x = Math.round(x / multiplier) * Number(multiplier);
+      state.grid[index].y = Math.round(y / multiplier) * Number(multiplier);
     },
     setWidth: (state, action) => {
       const { id, width } = action.payload;

@@ -1,8 +1,11 @@
 import React from "react";
 import { Button } from "@mui/joy";
-const ButtonComponent = () => {
+const ButtonComponent = ({ zoomlvl }) => {
   return (
-    <Button variant="solid" sx={{ width: "125px", height: "50px" }}>
+    <Button
+      variant="solid"
+      sx={{ width: "125px", height: "50px", transform: `scale(${zoomlvl})` }}
+    >
       Button
     </Button>
   );

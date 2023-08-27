@@ -10,24 +10,24 @@ export const Component = ({ id, type, x, y, handleStart, handleStop }) => {
   const dispatch = useDispatch();
   const zoomlvl = useSelector((state) => state.grid.zoomlvl);
   const targetRef = useRef(null);
-  //   const [position, setPosition] = useState({ x, y });
+  const [position, setPosition] = useState({ x, y });
 
-  //   const adjustedX = position.x / zoomlvl;
-  //   const adjustedY = position.y / zoomlvl;
+  const adjustedX = Math.round(position.x * zoomlvl);
+  const adjustedY = Math.round(position.y * zoomlvl);
 
   let element;
   switch (type) {
     case "button":
-      element = <Button />;
+      element = <Button zoomlvl={zoomlvl} />;
       break;
     case "text":
-      element = <Input />;
+      element = <Input zoomlvl={zoomlvl} />;
       break;
     case "dropdown":
-      element = <Select />;
+      element = <Select zoomlvl={zoomlvl} />;
       break;
     case "table":
-      element = <Table />;
+      element = <Table zoomlvl={zoomlvl} />;
     default:
       break;
   }
@@ -51,22 +51,31 @@ export const Component = ({ id, type, x, y, handleStart, handleStop }) => {
   );
   return (
     <Draggable
-      //   handle=".handle"
-      //   position={{ x: adjustedX, y: adjustedY }}
       position={{ x, y }}
-      grid={[25, 25]}
-      //   scale={1 / zoomlvl}
-      scale={1}
+      // position={{ x, y }}
+      grid={[
+        Math.round(25 * Number(zoomlvl)),
+        Math.round(25 * Number(zoomlvl)),
+      ]}
+      scale={(1 / Number(zoomlvl)).toFixed(2)}
+      // scale={1}
       bounds="parent"
       onStart={handleStart}
-      //   onStop={(e, data) => {
-      //     dispatch(moveComponent({ x: data.x * zoomlvl, y: data.y * zoomlvl })); // Update the position state
-      //     handleStop(e, data);
-      //   }}
-      onStop={stopHandler}
+      onStop={(e, data) => {
+        dispatch(moveComponent({ id, x: data.x, y: data.y, zoomlvl }));
+        setPosition((prev) => ({
+          ...prev,
+          x: data.x,
+          y: data.y,
+        }));
+
+        handleStop(e, data);
+      }}
+      // onStop={stopHandler}
       onDrag={() => {
         // dispatch(moveComponent({ id, x: adjustedX, y: adjustedY }));
-        dispatch(moveComponent({ id, x: x, y: y }));
+        setPosition((prev) => ({ ...prev, x: adjustedX, y: adjustedY }));
+        // dispatch(moveComponent({ id, x: x, y: y }));
       }}
     >
       {element}

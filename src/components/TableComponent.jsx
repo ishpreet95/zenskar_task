@@ -9,14 +9,14 @@ const rows = [
   createData("Ice cream sandwich", 237, 37, 4.3),
   createData("Cupcake", 305, 67, 4.3),
 ];
-const TableComponent = () => {
+const TableComponent = ({ zoomlvl }) => {
   return (
     <Table
       borderAxis="both"
       size="md"
       color="neutral"
       variant="soft"
-      sx={{ width: "400px", height: "225px" }}
+      sx={{ width: "400px", height: "225px", transform: `scale(${zoomlvl})` }}
     >
       <thead>
         <tr>
