@@ -12,7 +12,7 @@ const gridSlice = createSlice({
   initialState,
   reducers: {
     setZoom: (state, action) => {
-      state.zoomlvl = action.payload;
+      state.zoomlvl = action.payload.toFixed(1);
     },
     filterIds: (state, action) => {
       const { text } = action.payload;

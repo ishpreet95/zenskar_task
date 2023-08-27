@@ -28,7 +28,7 @@ const EditorCanvas = (props) => {
         <div
           style={{ cursor: "pointer", fontSize: "large" }}
           onClick={() => {
-            dispatch(setZoom(zoomlvl - 0.1));
+            dispatch(setZoom(Number(zoomlvl) - Number(0.1)));
           }}
         >
           -
@@ -37,13 +37,13 @@ const EditorCanvas = (props) => {
         <div
           style={{ cursor: "pointer", fontSize: "large" }}
           onClick={() => {
-            dispatch(setZoom(zoomlvl + 0.1));
+            dispatch(setZoom(Number(zoomlvl) + Number(0.1)));
           }}
         >
           +
         </div>
       </div>
-      {/* <div style={{ transform: `scale(${zoomlvl})` }}> */}
+      {/* <div className="canvas" style={{ transform: `scale(${zoomlvl})` }}> */}
       {grid.length ? (
         grid.map((item, key) => (
           <Component
@@ -56,8 +56,8 @@ const EditorCanvas = (props) => {
       ) : (
         <div>Drag and Drop here !!</div>
       )}
-      {/* </div> */}
     </div>
+    // </div>
   );
 };
 
