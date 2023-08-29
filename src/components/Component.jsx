@@ -52,13 +52,11 @@ export const Component = ({ id, type, x, y, handleStart, handleStop }) => {
   return (
     <Draggable
       position={{ x, y }}
-      // position={{ x, y }}
       grid={[
         Math.round(25 * Number(zoomlvl)),
         Math.round(25 * Number(zoomlvl)),
       ]}
-      scale={(1 / Number(zoomlvl)).toFixed(2)}
-      // scale={1}
+      scale={1}
       bounds="parent"
       onStart={handleStart}
       onStop={(e, data) => {

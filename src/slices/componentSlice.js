@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const initialState = {
   grid: [],
 };
@@ -9,7 +8,6 @@ const ComponentSlice = createSlice({
   initialState,
   reducers: {
     addComponent: (state, action) => {
-      console.log(action);
       const { id, type, x, y } = action.payload;
       state.grid.push({
         id,
@@ -21,7 +19,6 @@ const ComponentSlice = createSlice({
     moveComponent: (state, action) => {
       // console.log(action.payload);
       const { id, x, y, zoomlvl } = action.payload;
-      console.log(x, y);
       const multiplier = 25 * zoomlvl;
       const index = state.grid.findIndex((item) => item.id === id);
       state.grid[index].x = Math.round(x / multiplier) * Number(multiplier);

@@ -1,6 +1,10 @@
 import React from "react";
 import { Input } from "@mui/joy";
+import { useDispatch } from "react-redux";
+import { setDevData } from "../slices/gridSlice";
 const InputComponent = ({ zoomlvl }) => {
+  const dispatch = useDispatch();
+
   return (
     <Input
       size="md"
@@ -11,6 +15,9 @@ const InputComponent = ({ zoomlvl }) => {
         width: "250px",
         height: "50px",
         transform: `scale(${zoomlvl})`,
+      }}
+      onClick={(e) => {
+        dispatch(setDevData(e.target.classList));
       }}
     />
   );
