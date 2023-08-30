@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Table } from "@mui/joy";
 import { useDispatch } from "react-redux";
 import { setDevData } from "../slices/gridSlice";
@@ -14,6 +14,22 @@ const rows = [
 ];
 const TableComponent = ({ zoomlvl }) => {
   const dispatch = useDispatch();
+  const tableRef = useRef(null);
+  const clickHandler = () => {
+    const styles = window.getComputedStyle(tableRef.current);
+    const toSet = {
+      background: styles.background,
+      border: styles.border,
+      color: styles.color,
+      fontSize: styles.fontSize,
+      fontFamily: styles.fontFamily,
+      height: styles.height,
+      padding: styles.padding,
+      margin: styles.margin,
+      width: styles.width,
+    };
+    dispatch(setDevData(toSet));
+  };
 
   return (
     <Table
@@ -22,9 +38,8 @@ const TableComponent = ({ zoomlvl }) => {
       color="neutral"
       variant="soft"
       sx={{ width: "400px", height: "225px", transform: `scale(${zoomlvl})` }}
-      onClick={(e) => {
-        dispatch(setDevData(e.target.classList));
-      }}
+      onClick={clickHandler}
+      ref={tableRef}
     >
       <thead>
         <tr>
