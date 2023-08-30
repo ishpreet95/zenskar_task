@@ -1,6 +1,5 @@
 # Zenskar Task
-![image](https://github.com/ishpreet95/zenskar_task/assets/78937026/a5aa0c80-c22b-4f82-ba7b-376d19915675)
-
+![image](https://github.com/ishpreet95/zenskar_task/assets/78937026/84295a85-d8ba-477f-a9e3-38a833986df1)
 
 ## How to run
 
@@ -8,5 +7,3 @@
 npm i
 npm run dev
 ```
-## Dev Branch
-```https://zenskar-task-git-dev-ishpreet95.vercel.app/```

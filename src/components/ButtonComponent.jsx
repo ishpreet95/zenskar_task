@@ -18,7 +18,6 @@ const ButtonComponent = ({ zoomlvl }) => {
       margin: styles.margin,
       width: styles.width,
     };
-    console.log(toSet);
     dispatch(setDevData(toSet));
   };
 

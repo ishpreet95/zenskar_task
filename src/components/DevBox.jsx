@@ -14,9 +14,9 @@ const DevBox = () => {
       <div className="content">
         Styles
         <SyntaxHighlighter
-          language="css"
+          language="javascript"
           style={atomOneDarkReasonable}
-          wrapLines={true}
+          // wrapLines={true}
           wrapLongLines={true}
         >
           {/* {String(devData)} */}
