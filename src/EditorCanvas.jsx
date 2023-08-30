@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Component } from "./components/Component";
-import { setZoom } from "./slices/gridSlice";
+import { setDevMode, setZoom } from "./slices/gridSlice";
 import "./App.css";
 const EditorCanvas = (props) => {
   const dispatch = useDispatch();
   const grid = useSelector((state) => state.component.grid);
   const zoomlvl = useSelector((state) => state.grid.zoomlvl);
+  const devMode = useSelector((state) => state.grid.devMode);
   const [dragging, setDragging] = useState(false);
+  const canvasRef = useRef(null);
+
   useEffect(() => {
     if (grid.length) {
       localStorage.setItem("grid", JSON.stringify(grid));
@@ -25,7 +28,6 @@ const EditorCanvas = (props) => {
   };
 
   const gridBoxSize = Math.round(25 * Number(zoomlvl));
-  console.log(gridBoxSize);
   const backgroundGridStyle = {
     background: `
       linear-gradient(-90deg, #0066ff2e 1px, transparent 1px),
@@ -64,6 +66,12 @@ const EditorCanvas = (props) => {
     <div
       className={"editor-canvas"}
       style={dragging ? backgroundGridStyle : {}}
+      ref={canvasRef}
+      // onClick={(e) => {
+      //   e.target === canvasRef.current
+      //     ? dispatch(setDevMode(false))
+      //     : dispatch(setDevMode(true));
+      // }}
     >
       <div className="island">
         <div

@@ -1,5 +1,8 @@
 import React from "react";
 import { Table } from "@mui/joy";
+import { useDispatch } from "react-redux";
+import { setDevData } from "../slices/gridSlice";
+
 function createData(name, calories, carbs, protein) {
   return { name, calories, carbs, protein };
 }
@@ -10,6 +13,8 @@ const rows = [
   createData("Cupcake", 305, 67, 4.3),
 ];
 const TableComponent = ({ zoomlvl }) => {
+  const dispatch = useDispatch();
+
   return (
     <Table
       borderAxis="both"
@@ -17,6 +22,9 @@ const TableComponent = ({ zoomlvl }) => {
       color="neutral"
       variant="soft"
       sx={{ width: "400px", height: "225px", transform: `scale(${zoomlvl})` }}
+      onClick={(e) => {
+        dispatch(setDevData(e.target.classList));
+      }}
     >
       <thead>
         <tr>

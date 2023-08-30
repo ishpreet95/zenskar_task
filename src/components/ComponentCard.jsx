@@ -38,7 +38,6 @@ export const ComponentCard = ({ type, icon, title, description }) => {
           return;
 
         const id = Date.now();
-        console.log({ canvasX, canvasY, pageX, pageY, x, y });
         dispatch(addComponent({ id, type, x, y }));
       }}
       position={position}
